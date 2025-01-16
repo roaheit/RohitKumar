@@ -1,0 +1,43 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Rohit Kumar's personal website and blog" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body class="bg-gray-50 text-gray-900">
+    <header class="fixed top-0 w-full bg-white/80 backdrop-blur-sm border-b border-gray-200 z-50">
+      <nav class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+        <a href="/" class="text-xl font-bold text-primary">Rohit Kumar</a>
+        <div class="flex gap-6">
+          <a href="/" class="hover:text-primary transition-colors">Home</a>
+          <a href="/blog" class="hover:text-primary transition-colors">Blog</a>
+          <a href="/about" class="hover:text-primary transition-colors">About</a>
+        </div>
+      </nav>
+    </header>
+    
+    <main class="pt-20">
+      <slot />
+    </main>
+
+    <footer class="mt-20 border-t border-gray-200">
+      <div class="max-w-6xl mx-auto px-4 py-8">
+        <p class="text-center text-gray-600">© {new Date().getFullYear()} Rohit Kumar. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>
